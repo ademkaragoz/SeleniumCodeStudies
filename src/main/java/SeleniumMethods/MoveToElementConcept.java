@@ -1,0 +1,40 @@
+package SeleniumMethods;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MoveToElementConcept {
+
+	public static void main(String[] args) throws InterruptedException {
+WebDriverManager.chromedriver().setup();
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.verizonwireless.com/");
+		
+		WebElement phoneMenu = driver.findElement(By.xpath("//button[contains(text(), 'Phones list')]"));
+		Thread.sleep(2000);
+		
+		Actions actions = new Actions(driver);
+		actions.moveToElement(phoneMenu).build().perform();
+		Thread.sleep(2000);
+		
+		By smartPhone = By.id("thirdLevel00");
+		WebElement locator = driver.findElement(smartPhone);
+		//locator.click();
+		actions.click(locator).build().perform();
+
+		
+		
+		
+		
+		
+		
+	}
+
+}
